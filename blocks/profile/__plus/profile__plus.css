@@ -3,7 +3,6 @@
     min-height: 50px;
     margin: 0 0 0 auto;
     padding: 0;
-    box-sizing: border-box;
     border: 2px solid #FFF;
     border-radius: 2px;
     background-image: url(../../../images/Vector2.svg);
@@ -16,4 +15,13 @@
 .profile__plus:hover {
     opacity: 0.6;
     cursor: pointer;
+}
+
+
+@media screen and (max-width: 930px) {
+    .profile__plus {
+        margin: auto;
+        transform: translateY(0);
+        margin-top: 36px;
+    }
 }

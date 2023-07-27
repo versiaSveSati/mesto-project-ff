@@ -5,3 +5,10 @@
     transform: translateY(-5px);
     outline: 1px solid yellow;
 }
+
+@media screen and (max-width: 768px) {
+    .avatar {
+        margin: auto;
+        transform: translateY(0);
+    }
+}

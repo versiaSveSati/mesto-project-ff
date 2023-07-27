@@ -1,9 +1,41 @@
 .cards {
-    max-width: 880px;
+    max-width: calc(100% - 31.25%);
     display: grid;
     justify-items: center;
     margin: 50px auto 66px;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: repeat(2, 1fr);
     gap: 20px 17px;
+    outline: 1px solid yellow;
+}
+
+@media screen and (max-width: 1070px) {
+    .cards {
+        max-width: 590px;
+        grid-template-columns: repeat(2, 1fr);
+        margin: 36px auto 48px;
+        
+    }
+}
+
+
+@media screen and (max-width: 768px) {
+    .cards {
+        max-width: calc(100% - 27.28%);
+        
+    }
+}
+
+@media screen and (max-width: 512px) {
+    .cards {
+        max-width: calc(100% - 22.31%);
+       
+    }
+}
+
+
+@media screen and (max-width: 320px) {
+    .cards {
+        max-width: calc(100% - 5.94%);
+        
+    }
 }

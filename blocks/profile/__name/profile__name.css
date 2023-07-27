@@ -6,3 +6,19 @@
     outline: 1px solid yellow;
 
 }
+
+@media screen and (max-width: 768px) {
+    .profile__name {
+       
+        font-size: 35px;
+        line-height: 40px;
+    }
+}
+
+@media screen and (max-width: 500px) {
+    .profile__name {
+        max-width: 189px;
+        font-size: 27px;
+        line-height: 32.68px;
+    }
+}

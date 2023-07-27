@@ -7,3 +7,15 @@
     transform: translateY(-8px);
     outline: 1px solid yellow;
 }
+
+@media screen and (max-width: 930px) {
+    .profile__text {
+        transform: translateY(0);
+        font-size: 14px;
+        line-height: 16.94px;
+        max-width: 282px;
+        text-align: center;
+        grid-column-start: 1;
+        grid-column-end: 3;
+    }
+}

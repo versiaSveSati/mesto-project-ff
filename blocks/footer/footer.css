@@ -1,6 +1,5 @@
 .footer {
-    max-width: 880px;
-    margin: 0 auto;
-    padding-bottom: 60px;
-    
+    max-width: calc(100% - 31.25%);
+    margin: 0 auto 60px;
+    outline: 1px solid yellow;
 }

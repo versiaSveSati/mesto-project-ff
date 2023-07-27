@@ -1,5 +1,5 @@
 .profile {
-    max-width: 880px;
+    max-width: calc(100% - 31.25%);
     display: flex;
     align-items: center;
     margin: 0 auto;
@@ -7,3 +7,14 @@
     box-sizing: border-box;
 
 }
+
+
+@media screen and (max-width: 930px) {
+    .profile {
+        max-width: calc(100% - 11.88%);
+        flex-direction: column;
+        padding-top: 42px;
+     
+    }
+}
+
