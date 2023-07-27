@@ -13,6 +13,5 @@
 
 }
 .card__like:focus {
-    background-image: url(./images/like-active.png);
-
+    background-image: url(../../../images/like-active.png);
 }
