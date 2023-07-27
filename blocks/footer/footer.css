@@ -1,5 +1,28 @@
 .footer {
-    max-width: calc(100% - 31.25%);
+    max-width: 880px;
     margin: 0 auto 60px;
     outline: 1px solid yellow;
+}
+
+@media screen and (max-width: 1024px) {
+    .footer {
+        max-width: calc(100% - 30.22%);
+    }
+}
+@media screen and (max-width: 768px) {
+    .footer {
+        max-width: calc(100% - 28.52%);
+    }
+}
+
+@media screen and (max-width: 512px) {
+    .footer {
+        max-width: calc(100% - 25.10%);
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .footer {
+        max-width: 282px;
+    }
 }
