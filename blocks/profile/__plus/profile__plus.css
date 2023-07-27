@@ -1,0 +1,19 @@
+.profile__plus {
+    min-width: 150px;
+    min-height: 50px;
+    margin: 0 0 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    border: 2px solid #FFF;
+    border-radius: 2px;
+    background-image: url("./images/Vector2.svg");
+    background-color: transparent;
+    background-position: center;
+    background-repeat: no-repeat;
+    transform: translateY(-5px);
+}
+
+.profile__plus:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}

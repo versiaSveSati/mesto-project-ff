@@ -1,0 +1,9 @@
+.profile__text {
+    margin: 0;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 21.78px;
+    padding: 0;
+    transform: translateY(-8px);
+    outline: 1px solid yellow;
+}
