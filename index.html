@@ -10,10 +10,22 @@
 
 <body class="body">
     <div class="page">
+        <div class="popup">
+            <div class="popup__container">
+                <button class="popup__close" type="button"></button>
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <form class="popup__forms" name="forms">
+                    <input type="text" name="name" class="popup__form popup__form_name" value="Жак-Ив Кусто">
+                    <input type="text" name="profession" class="popup__form popup__form_profession" value="Исследователь океана">
+                    <button type="submit" class="popup__save">Сохранить</button>
+                </form>
+            </div>
+        </div>
         <header class="header">
             <img class="header__logo" src="./images/logo.svg" alt="логотип">
         </header>
         <main>
+
             <section class="profile">
                 <img src="./images/Avatar.jpg" class="profile__avatar" alt="аватар">
                 <div class="profile__info">

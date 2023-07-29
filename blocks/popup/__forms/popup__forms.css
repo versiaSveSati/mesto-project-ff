@@ -1,0 +1,7 @@
+.popup__forms {
+    display: flex;
+    flex-direction: column;
+    margin: 54px auto 37px;
+    gap: 30px;
+}
+

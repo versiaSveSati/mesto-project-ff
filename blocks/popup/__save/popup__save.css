@@ -1,0 +1,7 @@
+.popup__save {
+    background-color: rgba(0, 0, 0, 1);
+    color: white;
+    height: 50px;
+    border: none;
+    border-radius: 2px;
+}
