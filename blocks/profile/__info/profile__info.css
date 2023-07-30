@@ -12,11 +12,12 @@
 }
 
 
-@media screen and (max-width: 930px) {
+@media screen and (max-width: 320px) {
     .profile__info {
         max-width: calc(100% - 11.88%);
         gap: 14px 10px;
-        margin: 26px 0 0;
+        margin: 26px auto 0;
+        justify-items: center;
     
         
      

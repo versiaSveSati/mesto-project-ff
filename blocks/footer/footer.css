@@ -24,5 +24,7 @@
 @media screen and (max-width: 320px) {
     .footer {
         max-width: 282px;
+        transform: translateY(-12px);
     }
 }
+

@@ -18,10 +18,20 @@
 }
 
 
-@media screen and (max-width: 930px) {
+@media screen and (max-width: 880px) {
     .profile__plus {
         margin: auto;
-        transform: translateY(0);
-        margin-top: 36px;
+        
+        margin: 36px auto;
+        min-width: 282px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .profile__plus {
+        transform: translateY(-14px);
+        background-image: url(../../../images/Vector-320.svg);
+        
+        
     }
 }

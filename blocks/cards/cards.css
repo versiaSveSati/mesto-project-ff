@@ -12,7 +12,19 @@
 @media screen and (max-width: 1024px) {
     .cards {
         max-width: calc(100% - 30.22%);
-        margin: 36px auto 48px;
+        margin: 0 auto 48px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .cards {
+        max-width: calc(100% - 28.52%);
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .cards {
+        max-width: calc(100% - 11.88%);
     }
 }
 
@@ -20,5 +32,7 @@
 @media screen and (max-width: 320px) {
     .cards {
         max-width: 282px;
+        transform: translateY(-16px);
     }
 }
+
