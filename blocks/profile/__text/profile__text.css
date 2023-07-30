@@ -5,12 +5,10 @@
     line-height: 21.78px;
     padding: 0;
     transform: translateY(-8px);
-    outline: 1px solid yellow;
 }
 
-@media screen and (max-width: 930px) {
+@media screen and (max-width: 880px) {
     .profile__text {
-        
         font-size: 14px;
         line-height: 16.94px;
         max-width: 282px;
@@ -23,6 +21,6 @@
 @media screen and (max-width: 320px) {
     .profile__text {
         transform: translateY(-10px);
-        
+
     }
 }

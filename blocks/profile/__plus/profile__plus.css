@@ -20,9 +20,7 @@
 
 @media screen and (max-width: 880px) {
     .profile__plus {
-        margin: auto;
-        
-        margin: 36px auto;
+        margin: 36px auto 0;
         min-width: 282px;
     }
 }
@@ -31,7 +29,5 @@
     .profile__plus {
         transform: translateY(-14px);
         background-image: url(../../../images/Vector-320.svg);
-        
-        
     }
 }

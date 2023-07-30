@@ -15,7 +15,6 @@
 .profile__pencil:hover {
     opacity: 0.6;
     cursor: pointer;
-    
 }
 
 @media screen and (max-width: 320px) {
@@ -25,5 +24,3 @@
         transform: translate(15px, -4px);
     }
 }
-
-

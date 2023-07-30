@@ -3,8 +3,12 @@
     font-weight: 500;
     font-size: 42px;
     line-height: 1.14;
-    outline: 1px solid yellow;
+}
 
+@media screen and (max-width: 950px) {
+    .profile__name {
+        font-size: 39px;
+    }
 }
 
 @media screen and (max-width: 768px) {
@@ -30,6 +34,5 @@
 @media screen and (max-width: 320px) {
     .profile__name {
         transform: translate(14px, -4px);
-        
     }
 }

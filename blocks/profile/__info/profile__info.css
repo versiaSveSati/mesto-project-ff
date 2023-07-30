@@ -8,18 +8,21 @@
     padding: 0;
     box-sizing: border-box;
     color: white;
-    outline: 1px solid yellow;
 }
 
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 950px) {
+    .profile__info {
+        max-width: calc(100% - 11.88%);
+        margin-left: 20px;
+    }
+}
+
+@media screen and (max-width: 880px) {
     .profile__info {
         max-width: calc(100% - 11.88%);
         gap: 14px 10px;
         margin: 26px auto 0;
         justify-items: center;
-    
-        
-     
     }
 }

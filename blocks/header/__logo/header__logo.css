@@ -1,28 +1,23 @@
 .header__logo {
     max-width: 142px;
-    
-    outline: 1px solid yellow;
 }
 
 
 @media screen and (max-width: 1024px) {
     .header__logo {
         max-width: 132.44px;
-        
     }
 }
 
 @media screen and (max-width: 768px) {
     .header__logo {
         max-width: 122.87px;
-        
     }
 }
 
 @media screen and (max-width: 512px) {
     .header__logo {
         max-width: 113.31px;
-        
     }
 }
 
@@ -30,6 +25,5 @@
     .header__logo {
         max-width: 103.74px;
         margin-left: 27px;
-       
     }
 }

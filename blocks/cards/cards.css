@@ -6,13 +6,12 @@
     grid-template-columns: repeat(auto-fit, 282px);
     justify-content: center;
     gap: 20px 17px;
-    outline: 1px solid yellow;
 }
 
 @media screen and (max-width: 1024px) {
     .cards {
         max-width: calc(100% - 30.22%);
-        margin: 0 auto 48px;
+        margin: 36px auto 48px;
     }
 }
 
@@ -35,4 +34,3 @@
         transform: translateY(-16px);
     }
 }
-
