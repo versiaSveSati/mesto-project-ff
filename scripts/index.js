@@ -17,7 +17,7 @@ let popupCloseButtonElement = popupElement.querySelector('.popup__close');
 
 function togglePopup() {
   console.log('togglePopup');
-  popupElement.classList.toggle('popup_is-opened');
+  popupElement.classList.toggle('popup_opened');
   // toggle
   // если класс навешен - убери его
   // если класса нет - добавь его

@@ -1,12 +1,15 @@
 .popup__form {
+    
     font-weight: 400;
     font-size: 14px;
-    line-height: 16.94;
+    line-height: 16.94px;
     color: rgba(0, 0, 0, 1);
     width: 358px;
     height: 27px;
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 27px;
+    
 }
 
 
