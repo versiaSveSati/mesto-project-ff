@@ -36,6 +36,4 @@
 @import url(../blocks/popup/__title/popup__title.css);
 @import url(../blocks/popup/__forms/popup__forms.css);
 @import url(../blocks/popup/__form/popup__form.css);
-@import url(../blocks/popup/__form/_type_name/popup__form_type_name.css);
-@import url(../blocks/popup/__form/_type_job/popup__form_type_job.css);
 @import url(../blocks/popup/__save/popup__save.css);
