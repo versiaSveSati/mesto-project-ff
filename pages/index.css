@@ -1,7 +1,7 @@
 /*normalize*/
 @import url(../vendor/normalize.css);
 /*шрифты*/
-@import url(../fonts/fonts.css);
+@import url(../vendor/fonts/fonts.css);
 /*body*/
 @import url(../blocks/body/body.css);
 /*page*/

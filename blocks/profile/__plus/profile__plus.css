@@ -9,7 +9,6 @@
     background-color: transparent;
     background-position: center;
     background-repeat: no-repeat;
-    transform: translateY(-5px);
 }
 
 .profile__plus:hover {
@@ -20,14 +19,13 @@
 
 @media screen and (max-width: 880px) {
     .profile__plus {
-        margin: 36px auto 0;
+        margin: 33px auto 0;
         min-width: 282px;
     }
 }
 
 @media screen and (max-width: 320px) {
     .profile__plus {
-        transform: translateY(-14px);
-        background-image: url(../../../images/Vector-320.svg);
+        background-size: 16px 16px;
     }
 }

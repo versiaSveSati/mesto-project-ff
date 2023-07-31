@@ -1,7 +1,7 @@
 .header {
     max-width: calc(100% - 31.25%);
     margin: 45px auto 0;
-    padding-bottom: 41px;
+    padding-bottom: 36px;
     box-sizing: border-box;
     border-bottom: 1px solid rgba(84, 84, 84, 0.7);
 }
@@ -38,6 +38,6 @@
     .header {
         max-width: 100%;
         margin-top: 28px;
-        padding-bottom: 31.6px;
+        padding-bottom: 27px;
     }
 }

@@ -3,8 +3,10 @@
     font-weight: 400;
     font-size: 18px;
     line-height: 21.78px;
-    padding: 0;
-    transform: translateY(-8px);
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+
 }
 
 @media screen and (max-width: 880px) {
@@ -15,12 +17,12 @@
         text-align: center;
         grid-column-start: 1;
         grid-column-end: 3;
+        margin: 0 auto 0 25px;
     }
 }
 
 @media screen and (max-width: 320px) {
     .profile__text {
-        transform: translateY(-10px);
-
+        margin-left: 15px;
     }
 }

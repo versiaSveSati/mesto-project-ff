@@ -10,18 +10,7 @@
 
 <body class="body">
     <div class="page">
-        <div class="popup">
-            <div class="popup__container">
-                <button class="popup__close" type="button"></button>
-                <h2 class="popup__title">Редактировать профиль</h2>
-                <form class="popup__forms" name="forms">
-                    <input type="text" name="name" class="popup__form popup__form_name" value="Жак-Ив Кусто">
-                    <input type="text" name="profession" class="popup__form popup__form_job"
-                        value="Исследователь океана">
-                    <button type="submit" class="popup__save">Сохранить</button>
-                </form>
-            </div>
-        </div>
+
         <header class="header">
             <img class="header__logo" src="./images/logo.svg" alt="логотип">
         </header>
@@ -37,54 +26,66 @@
                 <button type="button" class="profile__plus"></button>
             </section>
             <section class="cards">
-                <div class="card">
+                <article class="card">
                     <img src="./images/Mask Group1.jpg" class="card__photo" alt="фото Карачаево-Черкессия">
                     <div class="card__info">
-                        <p class="card__text">Карачаево-Черкессия</p>
+                        <h2 class="card__text">Карачаево-Черкессия</h2>
                         <button type="button" class="card__like"><img src="./images/like.svg" alt="сердечко"></button>
                     </div>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
                     <img src="./images/Mask Group2.jpg" class="card__photo" alt="фото Гора Эльбрус">
 
                     <div class="card__info">
-                        <p class="card__text">Гора Эльбрус</p>
+                        <h2 class="card__text">Гора Эльбрус</h2>
                         <button type="button" class="card__like"><img src="./images/like.svg" alt="сердечко"></button>
                     </div>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
                     <img src="./images/Mask Group3.jpg" class="card__photo" alt="фото Домбай">
                     <div class="card__info">
-                        <p class="card__text">Домбай</p>
+                        <h2 class="card__text">Домбай</h2>
                         <button type="button" class="card__like"><img src="./images/like.svg" alt="сердечко"></button>
                     </div>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
                     <img src="./images/Mask Group4.jpg" class="card__photo" alt="фото Мачу-Пичу ">
                     <div class="card__info">
-                        <p class="card__text">Мачу-Пичу</p>
+                        <h2 class="card__text">Мачу-Пичу</h2>
                         <button type="button" class="card__like"><img src="./images/like.svg" alt="сердечко"></button>
                     </div>
-                </div>
-                <div class="card">
+                </article>
+                <article class="card">
                     <img src="./images/Mask Group5.jpg" class="card__photo" alt="фото Альпы">
                     <div class="card__info">
-                        <p class="card__text">Альпы</p>
+                        <h2 class="card__text">Альпы</h2>
                         <button type="button" class="card__like"><img src="./images/like.svg" alt="сердечко"></button>
                     </div>
-                </div>
-                <div class="card">
+                </article>
+                <articlev class="card">
                     <img src="./images/Mask Group6.jpg" class="card__photo" alt="фото Алтай">
                     <div class="card__info">
-                        <p class="card__text">Алтай</p>
+                        <h2 class="card__text">Алтай</h2>
                         <button type="button" class="card__like"><img src="./images/like.svg" alt="сердечко"></button>
                     </div>
-                </div>
+                </article>
             </section>
         </main>
         <footer class="footer">
             <p class="footer__copyright">© 2020 Mesto Russia</p>
         </footer>
+        <div class="popup">
+            <div class="popup__container">
+                <button class="popup__close" type="button"></button>
+                <h2 class="popup__title">Редактировать профиль</h2>
+                <form class="popup__forms" name="forms">
+                    <input type="text" name="name" class="popup__form popup__form_type_name" value="Жак-Ив Кусто">
+                    <input type="text" name="profession" class="popup__form popup__form_type_job"
+                        value="Исследователь океана">
+                    <button type="submit" class="popup__save">Сохранить</button>
+                </form>
+            </div>
+        </div>
     </div>
     <script src="./scripts/index.js" defer></script>
 </body>

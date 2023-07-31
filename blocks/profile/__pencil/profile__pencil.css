@@ -1,15 +1,14 @@
 .profile__pencil {
-    min-width: 24px;
-    min-height: 24px;
+    width: 24px;
+    height: 24px;
     background-image: url(../../../images/Vector.svg);
     background-repeat: no-repeat;
     background-position: center;
     background-color: transparent;
     border: 1px solid #FFF;
-    margin: 0;
+    margin-top: 7px;
     padding: 0;
     box-sizing: border-box;
-    transform: translate(1px, 3px);
 }
 
 .profile__pencil:hover {
@@ -17,10 +16,12 @@
     cursor: pointer;
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 650px) {
     .profile__pencil {
-        min-width: 18px;
-        min-height: 18px;
-        transform: translate(15px, -4px);
+        width: 18px;
+        height: 18px;
+        background-size: 7.5px 7.5px;
+        margin-top: 0;
+     
     }
 }

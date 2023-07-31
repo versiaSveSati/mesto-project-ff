@@ -9,21 +9,10 @@
     }
 }
 
-@media screen and (max-width: 768px) {
-    .footer {
-        max-width: calc(100% - 28.52%);
-    }
-}
-
-@media screen and (max-width: 512px) {
-    .footer {
-        max-width: calc(100% - 25.10%);
-    }
-}
-
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 832px) {
     .footer {
         max-width: 282px;
-        transform: translateY(-12px);
     }
 }
+
+
