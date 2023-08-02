@@ -4,23 +4,6 @@ let popupElement = document.querySelector('.popup');
 let popupOpenButtonElement = document.querySelector('.profile__pencil');
 // найдем кнопку закрытия модального окна, ищем ВНУТРИ попапа
 let popupCloseButtonElement = popupElement.querySelector('.popup__close');
-
-
-//функция открытия 
-function popupOpen() {
-  popupElement.classList.add('popup_opened');
-}
-//присваиваю значение функции
-popupOpenButtonElement.addEventListener('click', popupOpen);
-
-//функция закрытия 
-function popupClose() {
-  popupElement.classList.remove('popup_opened');
-}
-//присваиваю значение функции
-popupCloseButtonElement.addEventListener('click', popupClose);
-
-
 //Находим форму
 let formElement = popupElement.querySelector('.popup__forms');
 // Выбираем элементы, куда должны быть вставлены значения полей
@@ -30,8 +13,21 @@ let profileText = document.querySelector('.profile__text');
 let nameInput = formElement.querySelector('.popup__form_type_name');
 let jobInput = formElement.querySelector('.popup__form_type_job');
 
+//функция открытия 
+function popupOpen() {
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileText.textContent;
+  popupElement.classList.add('popup_opened');
+}
+//функция закрытия 
+function popupClose() {
+  popupElement.classList.remove('popup_opened');
+}
 
-
+//добавляю слушателя на открытие
+popupOpenButtonElement.addEventListener('click', popupOpen);
+//добавляю слушателя на закрытие
+popupCloseButtonElement.addEventListener('click', popupClose);
 
 
 // Обработчик «отправки» формы, хотя пока она никуда отправляться не будет
