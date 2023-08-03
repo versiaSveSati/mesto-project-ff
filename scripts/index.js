@@ -15,20 +15,19 @@ let jobInput = formElement.querySelector('.popup__form_type_job');
 
 //функция открытия 
 function popupOpen() {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileText.textContent;
   popupElement.classList.add('popup_opened');
 }
+
+function handleProfileEditClick() {
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileText.textContent;
+  popupOpen()
+}
+
 //функция закрытия 
 function popupClose() {
   popupElement.classList.remove('popup_opened');
 }
-
-//добавляю слушателя на открытие
-popupOpenButtonElement.addEventListener('click', popupOpen);
-//добавляю слушателя на закрытие
-popupCloseButtonElement.addEventListener('click', popupClose);
-
 
 // Обработчик «отправки» формы, хотя пока она никуда отправляться не будет
 function handleFormSubmit(evt) {
@@ -44,6 +43,11 @@ function handleFormSubmit(evt) {
 // Прикрепляем обработчик к форме:
 // он будет следить за событием “submit” - «отправка»
 formElement.addEventListener('submit', handleFormSubmit);
+
+//добавляю слушателя на открытие
+popupOpenButtonElement.addEventListener('click', popupOpen);
+//добавляю слушателя на закрытие
+popupCloseButtonElement.addEventListener('click', popupClose);
 
 
 
