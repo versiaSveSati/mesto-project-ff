@@ -45,7 +45,7 @@ function handleFormSubmit(evt) {
 formElement.addEventListener('submit', handleFormSubmit);
 
 //добавляю слушателя на открытие
-popupOpenButtonElement.addEventListener('click', popupOpen);
+popupOpenButtonElement.addEventListener('click', handleProfileEditClick);
 //добавляю слушателя на закрытие
 popupCloseButtonElement.addEventListener('click', popupClose);
 

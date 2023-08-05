@@ -1,5 +1,5 @@
 .profile__text {
-    max-width: 336px;
+    max-width: 294px;
     margin: 0;
     font-weight: 400;
     font-size: 18px;
@@ -20,9 +20,9 @@
     }
 }
 
-@media screen and (max-width: 320px) {
+@media screen and (max-width: 530px) {
     .profile__text {
-        max-width: 282px;
+        max-width: 189px;
         margin-left: 15px;
     }
 }
