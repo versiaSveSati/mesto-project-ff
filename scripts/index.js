@@ -70,11 +70,13 @@ function createCard(elements) {
   const cardElements = cardTemplate.querySelector('.card').cloneNode(true); //клонировали св-ва
   const cardPhoto = cardElements.querySelector('.card__photo'); //нашли картинку и сохранили в переменную
   const buttonCardDel = cardElements.querySelector('.card__button'); //выбрать кнопку удаления
+  const cardLike = cardElements.querySelector('.card__like');
   cardPhoto.src = elements.link; //добавить ссылку
   cardPhoto.alt = elements.name; //добавить альт
   cardElements.querySelector('.card__text').textContent = elements.name; //добывить название
+  
   cardElements.querySelector('.card__like').addEventListener('click', function(evt) { //выбрать лайк
-    evt.Target.classList.toggle('.card__like_active') // переключить лайк
+    evt.target.classList.toggle('.card__like_active'); // переключить лайк
 });
 
 buttonCardDel.addEventListener('click', deletCard); //слушатель 

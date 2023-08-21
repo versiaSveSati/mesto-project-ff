@@ -22,6 +22,7 @@
         height: 18px;
         background-size: 7.5px 7.5px;
         margin-top: 0;
+        transition: opacity .3s;
 
     }
 }

@@ -2,9 +2,14 @@
     min-width: 22px;
     max-height: 19px;
     border: none;
-    background-color: transparent;
+    background-color: transparent; 
+    background-image: url(../../../images/like.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     flex-shrink: 0;
     padding: 0;
+    transition: opacity 0.3s;
 }
 
 .card__like:hover {
@@ -12,6 +17,21 @@
     cursor: pointer;
 }
 
-.card__like:focus {
+.card__like_active {
+    min-width: 22px;
+    max-height: 19px;
+    border: none;
+    background-color: transparent;
     background-image: url(../../../images/like-active.svg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    flex-shrink: 0;
+    padding: 0;
+    transition: opacity 0.3s;
+}
+
+.card__like_active:hover {
+    opacity: 0.5;
+    cursor: pointer;
 }
