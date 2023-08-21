@@ -15,11 +15,17 @@ const saveButton = popup.querySelector(".popup__save"); //кнопка сохр�
 //добавить карточку
 const cardPopup = document.querySelector("#cards"); //попап
 const profilePlus = document.querySelector(".profile__plus"); //кнопка открытия  попапа
-const addCardPopupCloseButton = cardPopup.querySelector(".popup__close"); //кнопка закрытия попапа
+const popupCardCloseButton = cardPopup.querySelector(".popup__close"); //кнопка закрытия попапа
 const popupCardForms = cardPopup.querySelector(".popup__forms"); //находим форму
 const popupCardInputName = popupCardForms.querySelector(".popup__form_type_title"); //инпут название
 const popupCardInputLink = popupCardForms.querySelector(".popup__form_type_link"); //инпут ссылка
 const buttonSave = popupCardForms.querySelector(".popup__create"); //кнопка создать
+//Попап открытия изображения
+const popupImage = document.querySelector('.popup_overlay');  //нашли попап с картинкой
+const photo = popupImage.querySelector('.popup__photo');  //выбрали картинку
+const text = popupImage.querySelector('.popup__image-name');  //выбрали подпись
+const popupPictureCloseButton = popupImage.querySelector('.popup__close'); //кнопка закрытия попапа
+
 
 
 
@@ -48,41 +54,43 @@ saveButton.addEventListener("click", function () {
   closePopup(popup)
 });
 
-//слушатели
-popupOpenButtonElement.addEventListener("click", function () {
-  openPopup(popup)
-});
-popupProfileCloseButton.addEventListener("click", function () {
-  closePopup(popup)
-});
 
-profilePlus.addEventListener("click", function () {
-  openPopup(cardPopup)
-});
-addCardPopupCloseButton.addEventListener("click", function () {
-  closePopup(cardPopup)
-});
 
 
 
 //клонировать карточку
 function createCard(elements) {
   const cardElements = cardTemplate.querySelector('.card').cloneNode(true); //клонировали св-ва
-  const cardPhoto = cardElements.querySelector('.card__photo'); //нашли картинку и сохранили в переменную
+  const cardPhoto = cardElements.querySelector('.card__photo'); //нашли и сохранили картинку в переменную
   const buttonCardDel = cardElements.querySelector('.card__button'); //выбрать кнопку удаления
-  const cardLike = cardElements.querySelector('.card__like');
   cardPhoto.src = elements.link; //добавить ссылку
   cardPhoto.alt = elements.name; //добавить альт
   cardElements.querySelector('.card__text').textContent = elements.name; //добывить название
-  
-  cardElements.querySelector('.card__like').addEventListener('click', function(evt) { //выбрать лайк
-    evt.target.classList.toggle('.card__like_active'); // переключить лайк
+  cardElements.querySelector('.card__like').addEventListener('click', function(event) { //выбрать лайк
+    event.target.classList.toggle('.card__like_active'); // переключить лайк
+});
+cardElements.querySelector('.card__photo').addEventListener('click', function() {  //выбрали изображение
+  openImagePopup(elements.link, elements.name);  //открыли карточку
 });
 
-buttonCardDel.addEventListener('click', deletCard); //слушатель 
+buttonCardDel.addEventListener('click', deletCard); //слушатель удалить картинку
 
 return cardElements;
 }
+
+
+//Попап открытия изображения на весь экран
+function openImagePopup(imgSrc, imgText) {  //открыть попап с изображением
+  photo.src = imgSrc;  //подставили ссылку
+  photo.alt = imgText;  //подставили альт
+  text.textContent = imgText;  //подставили название
+  openPopup(popupImage);
+}
+function closeImagePopup() {  //закрыть попап с изображением
+  closePopup(popupImage);
+}
+
+
 
 // создание всех 6-ти карточек
 initialCards.forEach(function(elements) {
@@ -107,78 +115,29 @@ function deletCard (event) {
   listCardDel.remove(); //удалить карточку
 }
 
+//слушатели
+popupOpenButtonElement.addEventListener("click", function () { //открыть попап редактирования
+  openPopup(popup)
+});
+popupProfileCloseButton.addEventListener("click", function () {  //закрыть попап редактирования
+  closePopup(popup)
+});
+
+profilePlus.addEventListener("click", function () { //открыть попап добавить карточку 
+  openPopup(cardPopup)
+});
+popupCardCloseButton.addEventListener("click", function () { //закрыть попап добавить карточку
+  closePopup(cardPopup)
+});
+photo.addEventListener("click", function () {  //открыть попап фото
+  openPopup(popupImage)
+});
+popupPictureCloseButton.addEventListener("click", function () { //закрыть попап фото
+  closePopup(popupImage)
+});
 
 
 
-
-// //функция добавления карточек
-// function addCardForm(evt) {
-//   evt.preventDefault();
-//   const cardAdd = { name: cardName.value, link: cardLink.value };
-//   evt.target.reset();
-//   prependCardToGallery(cardAdd);
-// }
-
-// //вызоваем функцию добавленя карточек; закрываем форму
-// formCard.addEventListener("submit", addCardForm);
-// cardSaveButton.addEventListener("click", function () {
-//   closePopup(popupCard)
-// });
-
-
-
-
-
-
-
-// //создание первоначального списка карточек
-// function renderInitialCards() {
-//   //для кадого эллемента массива
-//   initialCards.forEach((cardAdd) => {
-//     //создаем карточку
-//     appendCardToGallery(cardAdd);
-//   });
-// }
-
-// //функция создания карточки
-// function createCardElement(cardAdd) {
-//   const card = cardTemplate.querySelector(".card").cloneNode(true);
-//   card.querySelector(".card__photo").src = cardAdd.link;
-//   card.querySelector(".card__photo").alt = cardAdd.name;
-//   card.querySelector(".card__text").textContent = cardAdd.name;
-
-//   addListenersToCard(card, cardAdd);
-//   return card;
-// }
-
-// //добавляем карточку в начало 
-// function prependCardToGallery(cardAdd) {
-//   //создаем карточку
-//   const cardElement = createCardElement(cardAdd);
-
-//   //добавляем карточку 
-//   gallery.prepend(cardElement);
-// }
-
-// // функциональность карточек
-// function addListenersToCard(card, cardAdd) {
-//   //лайки
-//   card.querySelector(".card__like").addEventListener("click", function (event) {
-//     event.target.classList.toggle("card__like_active");
-//   });
-
-//   //удаление карточки
-//   card.querySelector(".card__button").addEventListener("click", function () {
-//     card.remove();
-//   });
-// }
-
-
-
-
-
-
-// renderInitialCards();
 
 
 
