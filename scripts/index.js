@@ -25,6 +25,7 @@ const popupImage = document.querySelector('.popup_overlay');  //нашли по�
 const photo = popupImage.querySelector('.popup__photo');  //выбрали картинку
 const text = popupImage.querySelector('.popup__image-name');  //выбрали подпись
 const popupPictureCloseButton = popupImage.querySelector('.popup__close'); //кнопка закрытия попапа
+const cardLike = popupImage.querySelector('.card__like');
 
 
 
@@ -39,7 +40,7 @@ function closePopup(popup) {
   popup.classList.remove("popup_opened");
 }
 
-//функция для редактирования имени и профессии
+//отмена стандартной отправки формы попапа редактирования
 function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   const name = document.querySelector(".profile__name");
@@ -115,6 +116,17 @@ function deletCard (event) {
   listCardDel.remove(); //удалить карточку
 }
 
+//отмена стандартной отправки формы попапа добавления карточек
+function handleFormSubmitAddPopup (evt) {  
+  evt.preventDefault();
+  const cardNew = {name: popupCardInputName.value, link: popupCardInputLink.value};  //передать аргументы
+  addCardNew(cardNew);  //вызвать функцию создания новой карточки
+  popupCardInputName.value = '';
+  popupCardInputLink.value = '';
+  closePopup(cardPopup);  //дополнительно закрыть попап
+}
+cardPopup.addEventListener('submit', handleFormSubmitAddPopup);
+
 //слушатели
 popupOpenButtonElement.addEventListener("click", function () { //открыть попап редактирования
   openPopup(popup)
@@ -135,6 +147,8 @@ photo.addEventListener("click", function () {  //открыть попап фо�
 popupPictureCloseButton.addEventListener("click", function () { //закрыть попап фото
   closePopup(popupImage)
 });
+
+
 
 
 
