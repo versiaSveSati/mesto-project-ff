@@ -19,7 +19,7 @@ const cardPopup = document.querySelector("#cards"); //попап
 const buttonOpenAddCardPopup = document.querySelector(".profile__plus"); //кнопка открытия  попапа
 const popupCardCloseButton = cardPopup.querySelector(".popup__close"); //кнопка закрытия попапа
 const cardForm = cardPopup.querySelector(".popup__forms"); //находим форму
-const popupCardInputName = cardForm.querySelector(".popup__form_type_name"); //инпут название
+const popupCardInputName = cardForm.querySelector(".popup__form_type_title"); //инпут название
 const popupCardInputLink = cardForm.querySelector(".popup__form_type_link"); //инпут ссылка
 //Попап открытия изображения
 const popupImageText = document.querySelector('.popup_overlay');  //нашли попап с картинкой
@@ -35,7 +35,7 @@ function openPopup(profilePopup) {
 function handleProfileEditClick() {
   nameInput.value = profileName.textContent;
   jobInput.value = profileText.textContent;
-  openPopup()
+  openPopup(profilePopup)
 }
 
 //функция закрытия попапа
@@ -48,13 +48,10 @@ function handleProfileFormSubmit(evt) {
   evt.preventDefault();
   profileName.textContent = nameInput.value;
   profileText.textContent = jobInput.value;
-}
-
-//вызоваем функцию редактирования имени и профессии; закрываем форму
-profileForm.addEventListener("submit", handleProfileFormSubmit);
-profileFormSubmitButton.addEventListener("click", function () {
   closePopup(profilePopup)
-});
+}
+profileForm.addEventListener("submit", handleProfileFormSubmit);
+
 
 //клонировать карточку
 function createCard(elements) {
@@ -123,10 +120,11 @@ function handleFormSubmitAddPopup(evt) {
 }
 cardPopup.addEventListener('submit', handleFormSubmitAddPopup);
 
+
+
 //слушатели
-buttonOpenProfilePopup.addEventListener("click", function () { //открыть попап редактирования
-  openPopup(profilePopup)
-});
+buttonOpenProfilePopup.addEventListener("click", handleProfileEditClick); //открыть попап редактирования
+
 popupProfileCloseButton.addEventListener("click", function () {  //закрыть попап редактирования
   closePopup(profilePopup)
 });
