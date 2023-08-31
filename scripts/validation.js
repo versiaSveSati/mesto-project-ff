@@ -45,8 +45,8 @@ function setEvenetListener(formElement, config) {
 
     [...inputList].forEach(function(inputElement){
         inputElement.addEventListener('input', function(){
-            toggleButtonState(submitButtonElement, formElement.checkValidity(), config);
             checkInputValidity(inputElement, formElement, config);
+            toggleButtonState(submitButtonElement, formElement.checkValidity(), config);
         })
     })
 }

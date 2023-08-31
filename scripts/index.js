@@ -28,8 +28,8 @@ const text = popupImageText.querySelector('.popup__image-name');  //выбрал
 const popupPictureCloseButton = popupImageText.querySelector('.popup__close'); //кнопка закрытия попапа
 
 //функция открытия попапа
-function openPopup(profilePopup) {
-  profilePopup.classList.add("popup_opened");
+function openPopup(popup) {
+  popup.classList.add("popup_opened");
   document.addEventListener('keydown', closePopupEsc);
 }
 
@@ -40,8 +40,8 @@ function handleProfileEditClick() {
 }
 
 //функция закрытия попапа
-function closePopup(profilePopup) {
-  profilePopup.classList.remove("popup_opened");
+function closePopup(popup) {
+  popup.classList.remove("popup_opened");
   document.removeEventListener('keydown', closePopupEsc);
 }
 
@@ -86,7 +86,7 @@ function createCard(elements) {
     event.target.classList.toggle('card__like_active'); // переключить лайк
   });
 
-  cardElements.querySelector('.card__photo').addEventListener('click', function () {  //выбрали изображение
+  cardPhoto.addEventListener('click', function () {  //выбрали изображение
     openImagePopup(elements.link, elements.name);  //открыли карточку
   });
 
@@ -135,8 +135,9 @@ function handleFormSubmitAddPopup(evt) {
   evt.preventDefault();
   const cardNew = { name: popupCardInputName.value, link: popupCardInputLink.value };  //передать аргументы
   addCardNew(cardNew);  //вызвать функцию создания новой карточки
-  popupCardInputName.value = '';
-  popupCardInputLink.value = '';
+  evt.target.reset(); //очистить форму (вместо popupCardInputName.value = ''; popupCardInputLink.value = '';)
+  evt.submitter.classList.add('popup__save_type_invalid');  //добавить класс disabled
+  evt.submitter.disabled = 'disabled';  //сделать кнопку неактивной
   closePopup(cardPopup);  //дополнительно закрыть попап
 }
 cardPopup.addEventListener('submit', handleFormSubmitAddPopup);
@@ -146,19 +147,13 @@ cardPopup.addEventListener('submit', handleFormSubmitAddPopup);
 //слушатели
 buttonOpenProfilePopup.addEventListener("click", handleProfileEditClick); //открыть попап редактирования
 
-popupProfileCloseButton.addEventListener("click", function () {  //закрыть попап редактирования
-  closePopup(profilePopup)
-});
-
 buttonOpenAddCardPopup.addEventListener("click", function () { //открыть попап добавить карточку 
   openPopup(cardPopup)
 });
 popupCardCloseButton.addEventListener("click", function () { //закрыть попап добавить карточку
   closePopup(cardPopup)
 });
-popupImagePhoto.addEventListener("click", function () {  //открыть попап фото
-  openPopup(popupImageText)
-});
+
 popupPictureCloseButton.addEventListener("click", function () { //закрыть попап фото
   closePopup(popupImageText)
 });
