@@ -1,3 +1,15 @@
+//импорт из Card.js и validation.js
+import Card from './Card.js';
+import FormValidator from './validation.js';
+
+//универсальный конфиг
+const configForm = {
+  formSelector: ".popup__forms",
+  inputSelector: ".popup__form",
+  submitButtonSelector: ".popup__save",
+  inactiveButtonClass: "popup__save_type_invalid",
+  inputErrorClass: "popup__form_type_invalid",
+};
 
 //общие
 const cardsContainer = document.querySelector('.cards');
@@ -149,6 +161,17 @@ buttonOpenProfilePopup.addEventListener("click", handleProfileEditClick); //от
 
 buttonOpenAddCardPopup.addEventListener("click", function () { //открыть попап добавить карточку 
   openPopup(cardPopup)
+});
+
+forms.forEach((formElement) => {
+  const formValidator = new FormValidator(configForm, formElement);
+  formValidator.enableValidation();
+
+  if (formElement.id === 'edit-form') {
+    formElement.addEventListener('submit', handleProfileFormSubmit);
+  } else if (formElement.id === 'add-form') {
+    formElement.addEventListener('submit', handleFormSubmitAddPopup);
+  }
 });
 
 
