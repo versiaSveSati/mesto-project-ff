@@ -14,6 +14,7 @@ const configForm = {
 //общие
 const cardsContainer = document.querySelector('.cards');
 const cardTemplate = document.querySelector('#elements').content;
+const forms = document.querySelectorAll('.popup__forms');
 
 //попап с профилем
 const profilePopup = document.querySelector("#profile"); //попап
@@ -163,6 +164,7 @@ buttonOpenAddCardPopup.addEventListener("click", function () { //открыть 
   openPopup(cardPopup)
 });
 
+//валидация
 forms.forEach((formElement) => {
   const formValidator = new FormValidator(configForm, formElement);
   formValidator.enableValidation();
