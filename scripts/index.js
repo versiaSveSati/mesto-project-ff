@@ -1,6 +1,7 @@
 //импорт из Card.js и validation.js
 import Card from './Card.js';
-import FormValidator from './validation.js';
+import FormValidator from './FormValidator.js';
+import { initialCards } from './cards.js';
 
 //универсальный конфиг
 const configForm = {
@@ -37,7 +38,7 @@ const popupCardInputLink = cardForm.querySelector(".popup__form_type_link"); //�
 //Попап открытия изображения
 const popupImageText = document.querySelector('.popup_overlay');  //нашли попап с картинкой
 const popupImagePhoto = popupImageText.querySelector('.popup__photo');  //выбрали картинку
-const text = popupImageText.querySelector('.popup__image-name');  //выбрали подпись
+const imagetext = popupImageText.querySelector('.popup__image-name');  //выбрали подпись
 const popupPictureCloseButton = popupImageText.querySelector('.popup__close'); //кнопка закрытия попапа
 
 //функция открытия попапа
@@ -86,62 +87,35 @@ function handleProfileFormSubmit(evt) {
 }
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
-
-//клонировать карточку
-function createCard(elements) {
-  const cardElements = cardTemplate.querySelector('.card').cloneNode(true); //клонировали св-ва
-  const cardPhoto = cardElements.querySelector('.card__photo'); //нашли и сохранили картинку в переменную
-  const buttonCardDel = cardElements.querySelector('.card__button'); //выбрать кнопку удаления
-  cardPhoto.src = elements.link; //добавить ссылку
-  cardPhoto.alt = elements.name; //добавить альт
-  cardElements.querySelector('.card__text').textContent = elements.name; //добывить название
-  cardElements.querySelector('.card__like').addEventListener('click', function (event) { //выбрать лайк
-    event.target.classList.toggle('card__like_active'); // переключить лайк
-  });
-
-  cardPhoto.addEventListener('click', function () {  //выбрали изображение
-    openImagePopup(elements.link, elements.name);  //открыли карточку
-  });
-
-  buttonCardDel.addEventListener('click', deletCard); //слушатель удалить картинку
-
-  return cardElements;
-}
-
-
 //Попап открытия изображения на весь экран
 function openImagePopup(imgSrc, imgText) {  //открыть попап с изображением
   popupImagePhoto.src = imgSrc;  //подставили ссылку
   popupImagePhoto.alt = imgText;  //подставили альт
-  text.textContent = imgText;  //подставили название
+  imagetext.textContent = imgText;  //подставили название
   openPopup(popupImageText);
 }
 
 
-
-
-// создание всех 6-ти карточек
-initialCards.forEach(function (elements) {
-  const card = createCard(elements);
-  renderCard(card);
-});
-
-//Добавить карточку в разметку
-function renderCard(card) {
-  cardsContainer.append(card);
+//создать новую карточку
+function createNewCard(data) {
+  const card = new Card(data, '#elements', openImagePopup);
+  return card.createCard();
 }
 
-//создать новую карточку
+// создание всех 6-ти карточек из массива
+initialCards.forEach((item) => {
+  const newCard = createNewCard(item);
+  cardsContainer.append(newCard);
+});
+
+
+//добавить новую карточку
 function addCardNew(cardNew) {
-  const newCard = createCard(cardNew);
+  const newCard = createNewCard(cardNew);
   cardsContainer.prepend(newCard);
 }
 
-//удаление карточек
-function deletCard(event) {
-  const listCardDel = event.target.closest('.card'); //нашли родителя
-  listCardDel.remove(); //удалить карточку
-}
+
 
 //отмена стандартной отправки формы попапа добавления карточек
 function handleFormSubmitAddPopup(evt) {
@@ -150,7 +124,6 @@ function handleFormSubmitAddPopup(evt) {
   addCardNew(cardNew);  //вызвать функцию создания новой карточки
   evt.target.reset(); //очистить форму (вместо popupCardInputName.value = ''; popupCardInputLink.value = '';)
   evt.submitter.classList.add('popup__save_type_invalid');  //добавить класс disabled
-  evt.submitter.disabled = 'disabled';  //сделать кнопку неактивной
   closePopup(cardPopup);  //дополнительно закрыть попап
 }
 cardPopup.addEventListener('submit', handleFormSubmitAddPopup);
@@ -165,7 +138,7 @@ buttonOpenAddCardPopup.addEventListener("click", function () { //открыть 
 });
 
 //валидация
-forms.forEach((formElement) => {
+document.querySelectorAll('form').forEach(formElement => {
   const formValidator = new FormValidator(configForm, formElement);
   formValidator.enableValidation();
 
@@ -175,24 +148,3 @@ forms.forEach((formElement) => {
     formElement.addEventListener('submit', handleFormSubmitAddPopup);
   }
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
