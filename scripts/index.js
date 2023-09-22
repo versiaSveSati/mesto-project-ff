@@ -95,7 +95,6 @@ function openImagePopup(imgSrc, imgText) {  //открыть попап с из�
   openPopup(popupImageText);
 }
 
-
 //создать новую карточку
 function createNewCard(data) {
   const card = new Card(data, '#elements', openImagePopup);
@@ -108,14 +107,11 @@ initialCards.forEach((item) => {
   cardsContainer.append(newCard);
 });
 
-
 //добавить новую карточку
 function addCardNew(cardNew) {
   const newCard = createNewCard(cardNew);
   cardsContainer.prepend(newCard);
 }
-
-
 
 //отмена стандартной отправки формы попапа добавления карточек
 function handleFormSubmitAddPopup(evt) {
@@ -123,12 +119,9 @@ function handleFormSubmitAddPopup(evt) {
   const cardNew = { name: popupCardInputName.value, link: popupCardInputLink.value };  //передать аргументы
   addCardNew(cardNew);  //вызвать функцию создания новой карточки
   evt.target.reset(); //очистить форму (вместо popupCardInputName.value = ''; popupCardInputLink.value = '';)
-  evt.submitter.classList.add('popup__save_type_invalid');  //добавить класс disabled
   closePopup(cardPopup);  //дополнительно закрыть попап
 }
 cardPopup.addEventListener('submit', handleFormSubmitAddPopup);
-
-
 
 //слушатели
 buttonOpenProfilePopup.addEventListener("click", handleProfileEditClick); //открыть попап редактирования
@@ -141,10 +134,9 @@ buttonOpenAddCardPopup.addEventListener("click", function () { //открыть 
 document.querySelectorAll('form').forEach(formElement => {
   const formValidator = new FormValidator(configForm, formElement);
   formValidator.enableValidation();
-
+});
   if (formElement.id === 'edit-form') {
     formElement.addEventListener('submit', handleProfileFormSubmit);
   } else if (formElement.id === 'add-form') {
     formElement.addEventListener('submit', handleFormSubmitAddPopup);
   }
-});

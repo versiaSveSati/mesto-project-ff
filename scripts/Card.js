@@ -16,8 +16,8 @@ export default class Card {
     createCard() { //создать карточку
         this._element = this._getTemplate();
         this._buttonLike = this._element.querySelector('.card__like'); //нашли кнопку лайка
-        this._element.querySelector('.card__photo').src = this._link; //ссылка на картинку
         this._cardImage = this._element.querySelector('.card__photo');// нашли картинку
+        this._cardImage.src = this._link; //ссылка на картинку
         this._cardImage.alt = this._name; //картинка
         this._element.querySelector('.card__text').textContent = this._name; //название 
         this._setEventListener();
@@ -41,7 +41,7 @@ export default class Card {
         this._element = null;
     }
 
-    _handleCardLike(event) {
+    _handleCardLike() {
         this._buttonLike.classList.toggle('card__like_active');
     }
 }
