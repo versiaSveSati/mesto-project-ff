@@ -1,7 +1,10 @@
+import '../pages/index.css';
+
 //импорт из Card.js и validation.js
-import Card from './Card.js';
-import FormValidator from './FormValidator.js';
-import { initialCards } from './cards.js';
+import Card from '../components/Card.js';
+import FormValidator from '../components/FormValidator.js';
+import { initialCards } from '../scripts/cards.js';
+
 
 //универсальный конфиг
 const configForm = {
@@ -134,9 +137,9 @@ buttonOpenAddCardPopup.addEventListener("click", function () { //открыть 
 document.querySelectorAll('form').forEach(formElement => {
   const formValidator = new FormValidator(configForm, formElement);
   formValidator.enableValidation();
-});
   if (formElement.id === 'edit-form') {
     formElement.addEventListener('submit', handleProfileFormSubmit);
   } else if (formElement.id === 'add-form') {
     formElement.addEventListener('submit', handleFormSubmitAddPopup);
   }
+});

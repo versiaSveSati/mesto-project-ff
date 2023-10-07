@@ -25,7 +25,6 @@ export default class FormValidator {
         this._formElement.querySelector(`#${inputElement.name}-error`).textContent = ''; //удалить стандартный текст ошибки
     }
 
-
     _checkInputValidity(inputElement) {
         if (!inputElement.validity.valid) {
           this._showError(inputElement, inputElement.validationMessage);
@@ -48,7 +47,6 @@ export default class FormValidator {
         const hasInvalidInput = this._inputList.some(inputElement => !inputElement.validity.valid);
         hasInvalidInput ? this._disableSubmitButton() : this._enableSubmitButton();
     }
-
 
     _setEventListeners() {
         this._inputList.forEach(inputElement => {
