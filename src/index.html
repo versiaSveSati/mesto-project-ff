@@ -69,7 +69,30 @@
                 <h2 class="popup__image-name"></h2>
             </div>
         </div>
-
+        <section class="popup popup_type_delete-a-pic">
+            <div class="popup__container">
+                <h2 class="popup__title">Вы уверены?</h2>
+                <form class="popup__form" name="delete-pic">
+                    <button type="submit" class="popup__form-button popup__form-button_delete-a-pic"
+                        aria-label="сохранить">Да</button>
+                </form>
+                <button class="popup__close-button" type="button" aria-label="закрыть"></button>
+            </div>
+        </section>
+        <section class="popup popup_type_change-avatar">
+            <div class="popup__container">
+                <h2 class="popup__title popup__title_avatar">Обновить аватар</h2>
+                <form class="popup__form" name="add-picture">
+                    <input class="popup__form-item" type="url" name="avatar-link" id="avatar-link"
+                        placeholder="Ссылка на аватар" required />
+                    <span class="avatar-link-error popup__input"></span>
+                    <button type="submit" class="popup__form-button" aria-label="сохранить">
+                        Сохранить
+                    </button>
+                </form>
+                <button class="popup__close-button" type="button" aria-label="закрыть"></button>
+            </div>
+        </section>
     </div>
     <template id="elements">
         <article class="card">
