@@ -1,3 +1,4 @@
+//Переменные
 export const validationSettings = {
     formSelector: '.popup__form',
     inputSelector: '.popup__input',
