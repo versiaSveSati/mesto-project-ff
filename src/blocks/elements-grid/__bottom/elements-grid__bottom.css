@@ -1,0 +1,11 @@
+.elements-grid__bottom {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-content: normal;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 0 15px 0 21px;
+    margin: 0;
+}

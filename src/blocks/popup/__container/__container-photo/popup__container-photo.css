@@ -1,0 +1,10 @@
+.popup__container-photo {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: normal;
+    justify-content: normal;
+    align-items: normal;
+    max-width: 75vw;
+    position: relative;
+}

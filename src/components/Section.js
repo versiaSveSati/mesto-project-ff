@@ -1,23 +1,21 @@
 export default class Section {
-  constructor(renderer, containerSelector) {
-   
-    this._renderer = renderer;
-    this._container = document.querySelector(containerSelector);
-  }
+    constructor({ renderer }, cardSelector) {
+        this._container = cardSelector;
+        this._renderer = renderer;
+    }
 
-  // Метод отрисовки всех элементов
-  renderItems(data) {
-    data.forEach((item) => {
-      this._renderer(item);
-    });
-  }
+   //Перебрать  массив
+    rendererItems(data) {
+        data.forEach((item) => {
+            this._renderer(item);
+        });
+    }
 
-  // Метод добавления DOM-элемента в контейнер
-  addItemPrepend(element) {
-    this._container.prepend(element);
-  }
+    addItem(element) {
+        this._container.append(element);
+    }
 
-  addItemAppend(element) {
-    this._container.append(element);
-  }
+    addNewItem(element) {
+        this._container.prepend(element);
+    }
 }
