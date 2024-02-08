@@ -1,9 +1,18 @@
 .popup__form {
-    margin-top: 54px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16.94px;
+    color: rgba(0, 0, 0, 1);
+    width: 358px;
+    height: 27px;
+    border: none;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+    margin-bottom: 4px;
 }
 
-@media screen and (max-width: 320px) {
+
+@media screen and (max-width: 530px) {
     .popup__form {
-        margin-top: 75px;
+        width: 238px;
     }
 }

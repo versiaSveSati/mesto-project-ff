@@ -1,7 +1,0 @@
-.elements-grid__container {
-    min-height: 35px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 3px;
-}
