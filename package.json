@@ -1,12 +1,16 @@
 {
-  "name": "praktikum",
+  "name": "mesto",
   "version": "1.0.0",
-  "description": "",
+  "description": "### Обзор",
   "main": "index.js",
   "scripts": {
-    "build": "rm -rf dist && webpack",
-    "dev": "webpack serve"
+    "start": "css-to-bem-file-structure pages/style.css",
+    "build": "webpack --mode production",
+    "dev": "webpack serve",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
+  "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
@@ -16,7 +20,9 @@
     "babel-loader": "^9.1.3",
     "clean-webpack-plugin": "^4.0.0",
     "css-loader": "^6.8.1",
+    "css-to-bem-file-structure": "^0.0.5",
     "cssnano": "^6.0.1",
+    "gh-pages": "^6.0.0",
     "html-webpack-plugin": "^5.5.3",
     "mini-css-extract-plugin": "^2.7.6",
     "postcss-loader": "^7.3.3",
@@ -25,6 +31,6 @@
     "webpack-dev-server": "^4.15.1"
   },
   "dependencies": {
-    "core-js": "^3.33.0"
+    "core-js": "^3.32.2"
   }
 }
