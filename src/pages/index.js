@@ -24,7 +24,7 @@ const cardForm = cardPopup.querySelector(".popup__forms"); //находим фо
 const popupCardInputName = cardForm.querySelector(".popup__form_type_title"); //инпут название
 const popupCardInputLink = cardForm.querySelector(".popup__form_type_link"); //инпут ссылка
 //Попап открытия изображения
-const popupImageText = document.querySelector('.popup_overlay');  //нашли попап с картинкой
+const popupImageText = document.querySelector('.popup_overlay');  //попап с картинкой
 const popupImagePhoto = popupImageText.querySelector('.popup__photo');  //выбрали картинку
 const text = popupImageText.querySelector('.popup__image-name');  //выбрали подпись
 const popupPictureCloseButton = popupImageText.querySelector('.popup__close'); //кнопка закрытия попапа
@@ -56,7 +56,7 @@ function closePopupEsc(evt) {
 }
 
 //закрытие попапов через оверлей
-const popupList = Array.from(document.querySelectorAll('.popup')); // найти все попапы, преобразовали в массив
+const popupList = Array.from(document.querySelectorAll('.popup')); // найти все попапы, преобразовать в массив
 popupList.forEach((popup) => { // перебираем элементы массива, каждый записываем в переменную popup
   popup.addEventListener('mouseup', (event) => { // на каждый попап установить слушатель
     const targetClassList = event.target.classList; // записать в переменную класс элемента, на котором произошло событие
