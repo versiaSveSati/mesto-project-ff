@@ -1,9 +1,11 @@
 import '../pages/index.css';
 import { initialCards } from '../scripts/cards.js';
+import { createCard } from '../components/card.js';
+import { openPopup, closePopup } from '../components/modal.js';
 
 //общие
 const cardsContainer = document.querySelector('.cards');
-const cardTemplate = document.querySelector('#elements').content;
+
 
 //попап с профилем
 const profilePopup = document.querySelector("#profile"); //попап
@@ -29,42 +31,12 @@ const popupImagePhoto = popupImageText.querySelector('.popup__photo');  //выб
 const text = popupImageText.querySelector('.popup__image-name');  //выбрали подпись
 const popupPictureCloseButton = popupImageText.querySelector('.popup__close'); //кнопка закрытия попапа
 
-//функция открытия попапа
-function openPopup(profilePopup) {
-  profilePopup.classList.add("popup_opened");
-  document.addEventListener('keydown', closePopupEsc);
-}
-
+//функция-обработчик события открытия модального окна для редактирования профиля  
 function handleProfileEditClick() {
-  nameInput.value = profileName.textContent;
-  jobInput.value = profileText.textContent;
-  openPopup(profilePopup)
+  nameInput.value = profileName.textContent; //Значение поля ввода имени (nameInput) устанавливается равным тексту, который находится в элементе с классом profileName. profileName - это элемент, содержащий текущее имя пользователя.
+  jobInput.value = profileText.textContent; //Значение поля ввода профессии (jobInput) устанавливается равным тексту, который находится в элементе с классом profileText. profileText - это элемент, содержащий текущую информацию о профессии пользователя
+  openPopup(profilePopup) // Вызывается функция openPopup с аргументом profilePopup. эта функция отвечает за открытие модального окна. profilePopup - это переменная, содержащая ссылку на модальное окно профиля.
 }
-
-//функция закрытия попапа
-function closePopup(profilePopup) {
-  profilePopup.classList.remove("popup_opened");
-  document.removeEventListener('keydown', closePopupEsc);
-}
-
-//зактытие через Esc
-function closePopupEsc(evt) {
-  if (evt.key === 'Escape') {
-    const openedPopup = document.querySelector('.popup_opened');
-    closePopup(openedPopup);
-  }
-}
-
-//закрытие попапов через оверлей
-const popupList = Array.from(document.querySelectorAll('.popup')); // найти все попапы, преобразовать в массив
-popupList.forEach((popup) => { // перебираем элементы массива, каждый записываем в переменную popup
-  popup.addEventListener('mouseup', (event) => { // на каждый попап установить слушатель
-    const targetClassList = event.target.classList; // записать в переменную класс элемента, на котором произошло событие
-    if (targetClassList.contains('popup') || targetClassList.contains('popup__close')) { // если есть класс попапа или кнопка закрыть
-      closePopup(popup); // если один из классов присутствует, то закрываем попап
-    }
-  })
-})
 
 //отмена стандартной отправки формы попапа редактирования
 function handleProfileFormSubmit(evt) {
@@ -75,29 +47,6 @@ function handleProfileFormSubmit(evt) {
 }
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
-
-//клонировать карточку
-function createCard(elements) {
-  const cardElements = cardTemplate.querySelector('.card').cloneNode(true); //клонировали св-ва
-  const cardPhoto = cardElements.querySelector('.card__photo'); //нашли и сохранили картинку в переменную
-  const buttonCardDel = cardElements.querySelector('.card__button'); //выбрать кнопку удаления
-  cardPhoto.src = elements.link; //добавить ссылку
-  cardPhoto.alt = elements.name; //добавить альт
-  cardElements.querySelector('.card__text').textContent = elements.name; //добавить название
-  cardElements.querySelector('.card__like').addEventListener('click', function (event) { //выбрать лайк
-    event.target.classList.toggle('card__like_active'); // переключить лайк
-  });
-
-  cardElements.querySelector('.card__photo').addEventListener('click', function () {  //выбрали изображение
-    openImagePopup(elements.link, elements.name);  //открыли карточку
-  });
-
-  buttonCardDel.addEventListener('click', deletCard); //слушатель удалить картинку
-
-  return cardElements;
-}
-
-
 //Попап открытия изображения на весь экран
 function openImagePopup(imgSrc, imgText) {  //открыть попап с изображением
   popupImagePhoto.src = imgSrc;  //подставили ссылку
@@ -105,9 +54,6 @@ function openImagePopup(imgSrc, imgText) {  //открыть попап с из�
   text.textContent = imgText;  //подставили название
   openPopup(popupImageText);
 }
-
-
-
 
 // создание всех 6-ти карточек
 initialCards.forEach(function (elements) {
@@ -126,12 +72,6 @@ function addCardNew(cardNew) {
   cardsContainer.prepend(newCard);
 }
 
-//удаление карточек
-function deletCard(event) {
-  const listCardDel = event.target.closest('.card'); //нашли родителя
-  listCardDel.remove(); //удалить карточку
-}
-
 //отмена стандартной отправки формы попапа добавления карточек
 function handleFormSubmitAddPopup(evt) {
   evt.preventDefault();
@@ -143,9 +83,7 @@ function handleFormSubmitAddPopup(evt) {
 }
 cardPopup.addEventListener('submit', handleFormSubmitAddPopup);
 
-
-
-//слушатели
+//СЛУШАТЕЛИ
 buttonOpenProfilePopup.addEventListener("click", handleProfileEditClick); //открыть попап редактирования
 
 popupProfileCloseButton.addEventListener("click", function () {  //закрыть попап редактирования
