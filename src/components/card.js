@@ -1,3 +1,5 @@
+import { openImagePopup } from '../pages/index.js'
+
 //клонировать карточку
 export function createCard(elements) {
     const cardTemplate = document.querySelector('#elements').content;

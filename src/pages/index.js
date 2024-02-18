@@ -48,7 +48,7 @@ function handleProfileFormSubmit(evt) {
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
 //Попап открытия изображения на весь экран
-function openImagePopup(imgSrc, imgText) {  //открыть попап с изображением
+export function openImagePopup(imgSrc, imgText) {  //открыть попап с изображением
   popupImagePhoto.src = imgSrc;  //подставили ссылку
   popupImagePhoto.alt = imgText;  //подставили альт
   text.textContent = imgText;  //подставили название
