@@ -6,7 +6,6 @@ import { openPopup, closePopup } from '../components/modal.js';
 //общие
 const cardsContainer = document.querySelector('.cards');
 
-
 //попап с профилем
 const profilePopup = document.querySelector("#profile"); //попап
 const buttonOpenProfilePopup = document.querySelector(".profile__pencil"); //кнопка открытия  попапа
@@ -26,10 +25,10 @@ const cardForm = cardPopup.querySelector(".popup__forms"); //находим фо
 const popupCardInputName = cardForm.querySelector(".popup__form_type_title"); //инпут название
 const popupCardInputLink = cardForm.querySelector(".popup__form_type_link"); //инпут ссылка
 //Попап открытия изображения
-const popupImageText = document.querySelector('.popup_overlay');  //попап с картинкой
-const popupImagePhoto = popupImageText.querySelector('.popup__photo');  //выбрали картинку
-const text = popupImageText.querySelector('.popup__image-name');  //выбрали подпись
-const popupPictureCloseButton = popupImageText.querySelector('.popup__close'); //кнопка закрытия попапа
+const popupImage = document.querySelector('.popup_overlay');  //попап с картинкой
+const popupImagePhoto = popupImage.querySelector('.popup__photo');  //выбрали картинку
+const popupImageText = popupImage.querySelector('.popup__image-name');  //выбрали подпись
+const popupPictureCloseButton = popupImage.querySelector('.popup__close'); //кнопка закрытия попапа
 
 //функция-обработчик события открытия модального окна для редактирования профиля  
 function handleProfileEditClick() {
@@ -47,17 +46,17 @@ function handleProfileFormSubmit(evt) {
 }
 profileForm.addEventListener("submit", handleProfileFormSubmit);
 
-//Попап открытия изображения на весь экран
+//функция открытия модального окна изображения карточки
 export function openImagePopup(imgSrc, imgText) {  //открыть попап с изображением
   popupImagePhoto.src = imgSrc;  //подставили ссылку
   popupImagePhoto.alt = imgText;  //подставили альт
-  text.textContent = imgText;  //подставили название
-  openPopup(popupImageText);
+  popupImageText.textContent = imgText;  //подставили название
+  openPopup(popupImage);
 }
 
 // создание всех 6-ти карточек
 initialCards.forEach(function (elements) {
-  const card = createCard(elements);
+  const card = createCard(elements, openImagePopup); // передаем openImagePopup в createCard
   renderCard(card);
 });
 
@@ -68,7 +67,7 @@ function renderCard(card) {
 
 //создать новую карточку
 function addCardNew(cardNew) {
-  const newCard = createCard(cardNew);
+  const newCard = createCard(cardNew, openImagePopup); // передаем openImagePopup в createCard
   cardsContainer.prepend(newCard);
 }
 
@@ -97,10 +96,10 @@ popupCardCloseButton.addEventListener("click", function () { //закрыть п
   closePopup(cardPopup)
 });
 popupImagePhoto.addEventListener("click", function () {  //открыть попап фото
-  openPopup(popupImageText)
+  openPopup(popupImage)
 });
 popupPictureCloseButton.addEventListener("click", function () { //закрыть попап фото
-  closePopup(popupImageText)
+  closePopup(popupImage)
 });
 
 
