@@ -2,6 +2,7 @@ import '../pages/index.css';
 import { initialCards } from '../scripts/cards.js';
 import { createCard } from '../components/card.js';
 import { openPopup, closePopup } from '../components/modal.js';
+import { enableValidation, clearValidation } from '../components/validation.js';
 
 //общие
 const cardsContainer = document.querySelector('.cards');
@@ -82,6 +83,21 @@ function handleFormSubmitAddPopup(evt) {
 }
 cardPopup.addEventListener('submit', handleFormSubmitAddPopup);
 
+// Конфигурационный объект для валидации формы
+const configForm = {
+  formSelector: ".popup__forms",
+  inputSelector: ".popup__form",
+  submitButtonSelector: ".popup__save",
+  inactiveButtonClass: "popup__save_type_invalid",
+  inputErrorClass: "popup__form_type_invalid",
+};
+
+// Активировать валидацию для форм с использованием заданной конфигурации
+enableValidation(configForm);
+
+// Вызываем clearValidation для формы профиля
+clearValidation(profileForm, configForm);
+
 //СЛУШАТЕЛИ
 buttonOpenProfilePopup.addEventListener("click", handleProfileEditClick); //открыть попап редактирования
 
@@ -101,24 +117,4 @@ popupImagePhoto.addEventListener("click", function () {  //открыть поп
 popupPictureCloseButton.addEventListener("click", function () { //закрыть попап фото
   closePopup(popupImage)
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
