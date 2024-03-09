@@ -48,10 +48,8 @@ const popupPictureCloseButton = popupImage.querySelector('.popup__close'); //к�
 const profileEditAvatarButton = document.querySelector('.profile__edit-avatar'); //кнопка изменить аватар
 const popupUpdatePicture = document.querySelector('.popup_type_update-pic'); //попап изменить аватар
 const popupFormUpdatePicture = document.querySelector('form[name="update-pic"]'); //форма изменить аватар
-console.log(document.forms);
-console.log("popupFormUpdatePicture:", popupFormUpdatePicture);
 const popupInputPictureUrl = popupFormUpdatePicture.querySelector('.popup__input_type_picture-url'); //инпут ссылка на новый аватар
-console.log("popupInputPictureUrl:", popupInputPictureUrl);
+
 let userId;
 
 function changeLikeHandler(cardId, cardLikeCountElement, cardLikeButton) {
