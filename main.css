@@ -19,6 +19,7 @@
 .card__info{align-items:center;color:#000;display:flex;justify-content:space-between;margin:22px 20px 31px 21px;max-width:246px}
 .card__text{font-size:24px;font-weight:900;line-height:29.05px;margin:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .card__like{background-color:transparent;background-image:url(87ed371465c7a6a1cd01.svg);background-position:50%;background-repeat:no-repeat;background-size:cover;border:none;flex-shrink:0;height:19px;padding:0;transition:opacity .3s;width:22px}.card__like:hover{cursor:pointer;opacity:.5}
+.card__likes-number{font-size:13px;font-weight:400;line-height:normal;text-align:center}
 .card__like_active{background-color:transparent;background-image:url(fe17a515669479b1e649.svg);background-position:50%;background-repeat:no-repeat;background-size:cover;border:none;flex-shrink:0;height:19px;padding:0;transition:opacity .3s;width:22px}.card__like_active:hover{cursor:pointer;opacity:.5}
 .footer{margin:0 auto 60px;max-width:880px}@media screen and (max-width:1024px){.footer{max-width:69.78%}}@media screen and (max-width:832px){.footer{margin-bottom:33px;max-width:282px}}
 .footer__copyright{box-sizing:border-box;color:#545454;font-size:18px;font-weight:400;line-height:21.78px;margin:0;text-align:left}@media screen and (max-width:832px){.footer__copyright{font-size:14px;line-height:16.94px}}
