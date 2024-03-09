@@ -56,7 +56,7 @@ const api = {
     .then(res => checkResponse(res))
   }
   
-  // //5. Постановка и снятие лайка
+  //5. Постановка и снятие лайка
   export function handleSetLike(cardId) {
     return fetch(`${api.baseUrl}/cards/likes/${cardId}`, {
       method: 'PUT',
@@ -73,7 +73,7 @@ const api = {
     .then(res => checkResponse(res))
   }
   
-  // //6. Удаление карточки
+  //6. Удаление карточки
   export function deleteCardData(cardId) {
     return fetch(`${api.baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
@@ -82,7 +82,7 @@ const api = {
     .then(res => checkResponse(res))
   }
   
-  // //7. Обновление аватара пользователя
+  //7. Обновление аватара пользователя
   export function saveUserPicture(pictureData) {
     return fetch(`${api.baseUrl}/users/me/avatar`, {
       method: 'PATCH',

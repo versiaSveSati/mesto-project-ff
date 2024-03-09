@@ -1,7 +1,7 @@
+
 import '../pages/index.css';
-import { initialCards } from '../scripts/cards.js';
 import { createCard, changeLike, handleDeleteCard } from '../components/card.js';
-import { openPopup, closePopup } from '../components/modal.js';
+import { openPopup, closePopup, closePopupClickOverlay } from '../components/modal.js';
 import { enableValidation, clearValidation } from '../components/validation.js';
 import { 
   getUserInfo, getInitialCards, saveUserData,
@@ -9,7 +9,7 @@ import {
 } from '../components/api.js'; 
 
 // Конфигурационный объект для валидации формы
-const configForm = {
+const config = {
   formSelector: ".popup__forms",
   inputSelector: ".popup__form",
   submitButtonSelector: ".popup__save",
@@ -47,9 +47,11 @@ const popupPictureCloseButton = popupImage.querySelector('.popup__close'); //к�
 //Попап изменить аватар
 const profileEditAvatarButton = document.querySelector('.profile__edit-avatar'); //кнопка изменить аватар
 const popupUpdatePicture = document.querySelector('.popup_type_update-pic'); //попап изменить аватар
-const popupFormUpdatePicture = document.forms['update-pic']; //форма изменить аватар
+const popupFormUpdatePicture = document.querySelector('form[name="update-pic"]'); //форма изменить аватар
+console.log(document.forms);
+console.log("popupFormUpdatePicture:", popupFormUpdatePicture);
 const popupInputPictureUrl = popupFormUpdatePicture.querySelector('.popup__input_type_picture-url'); //инпут ссылка на новый аватар
-
+console.log("popupInputPictureUrl:", popupInputPictureUrl);
 let userId;
 
 function changeLikeHandler(cardId, cardLikeCountElement, cardLikeButton) {

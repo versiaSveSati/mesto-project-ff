@@ -39,18 +39,21 @@ function checkInputValidity(inputElement, formElement, config) {
 
 // Функция изменения состояния кнопки отправки
 function toggleButtonState(buttonElement, isActive, config) {
-    // Если форма валидна, сделать кнопку активной, иначе сделать ее неактивной
-    if (isActive) {
-        buttonElement.disabled = false;
-        buttonElement.classList.remove(config.inactiveButtonClass);
-    } else {
-        buttonElement.classList.add(config.inactiveButtonClass);
-        buttonElement.disabled = 'disabled';
+    // Проверяем, существует ли элемент, прежде чем использовать его свойства
+    if (buttonElement) {
+        // Если форма валидна, сделать кнопку активной, иначе сделать ее неактивной
+        if (isActive) {
+            buttonElement.disabled = false;
+            buttonElement.classList.remove(config.inactiveButtonClass);
+        } else {
+            buttonElement.classList.add(config.inactiveButtonClass);
+            buttonElement.disabled = 'disabled';
+        }
     }
 }
 
 // Функция для очистки ошибок валидации и делает кнопку неактивной
-function clearValidation(formElement, config) {
+export function clearValidation(formElement, config) {
     // Получаем все элементы ввода внутри формы
     const inputList = formElement.querySelectorAll(config.inputSelector);
     
@@ -90,7 +93,7 @@ function setEvenetListener(formElement, config) {
 }
 
 // Функция активации валидации для форм
-function enableValidation(config) {
+export function enableValidation(config) {
     // Найти все формы, соответствующие селектору
     const formsList = document.querySelectorAll(config.formSelector);
     // Для каждой формы установить обработчики событий и активировать валидацию
@@ -98,6 +101,3 @@ function enableValidation(config) {
         setEvenetListener(formElement, config);
     });
 }
-
-// Экспорт функции enableValidation для возможности использования в других модулях
-export { enableValidation, clearValidation };

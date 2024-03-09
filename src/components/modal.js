@@ -19,6 +19,7 @@ function closePopupEsc(evt) {
 }
 
 //закрытие попапов через оверлей
+export function closePopupClickOverlay() {
 const popupList = Array.from(document.querySelectorAll('.popup')); // найти все попапы, преобразовать в массив
 popupList.forEach((popup) => { // перебираем элементы массива, каждый записываем в переменную popup
     popup.addEventListener('mouseup', (event) => { // на каждый попап установить слушатель
@@ -28,3 +29,4 @@ popupList.forEach((popup) => { // перебираем элементы масс
         }
     })
 })
+}
