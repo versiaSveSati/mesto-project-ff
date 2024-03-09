@@ -12,6 +12,7 @@
 /*profile*/
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
+@import url(../blocks/profile/__edit-avatar/profile__edit-avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
 @import url(../blocks/profile/__name/profile__name.css);
 @import url(../blocks/profile/__pencil/profile__pencil.css);
@@ -46,3 +47,5 @@
 @import url(../blocks/popup/__card/popup__card.css);
 @import url(../blocks/popup/__photo/popup__photo.css);
 @import url(../blocks/popup/__image-name/popup__image-name.css);
+@import url(../blocks/popup/__container/_container/popup__container_container_avatar.css);
+@import url(../blocks/popup/_is-animated/popup_is-animated.css);

@@ -1,35 +1,86 @@
-//клонировать карточку
-export function createCard(elements, openImagePopup) { // передаем openImagePopup в createCard
-    const cardTemplate = document.querySelector('#elements').content;
-    const cardElements = cardTemplate.querySelector('.card').cloneNode(true); //клонировали св-ва
-    const cardPhoto = cardElements.querySelector('.card__photo'); //нашли и сохранили картинку в переменную
-    const buttonCardDel = cardElements.querySelector('.card__button'); //выбрать кнопку удаления
-    const buttonLike = cardElements.querySelector('.card__like'); //найти кнопку лайка
-    cardPhoto.src = elements.link; //добавить ссылку
-    cardPhoto.alt = elements.name; //добавить альт
-    cardElements.querySelector('.card__text').textContent = elements.name; //добавить название
-    
-    cardPhoto.onerror = function () {
-        // Заменяем сломанное изображение на пустой src (или другое изображение-заглушку)
-        cardPhoto.src = ''; 
-        cardPhoto.alt = ''; 
-    };
+import { deleteCardData, handleRemoveLike, handleSetLike } from '../components/api.js'
 
-    cardPhoto.addEventListener('click', function () {  
-        openImagePopup(elements.link, elements.name);  //слушатель открытия изображения
+const cardTemplate = document.querySelector('#elements').content;
+
+// Функция клонирования темплейта
+function cloneCardTemplate () {
+  return cardTemplate.querySelector('.card').cloneNode(true);
+}
+
+// Функция создания карточки
+export function createCard (cardData, deleteHandler, likeHandler, imageHandler, userId) {
+  const cardElement = cloneCardTemplate();
+  const cardDeletButton = cardElement.querySelector('.card__button');
+  const cardLikeCountElement = cardElement.querySelector('.card__likes-number');
+  const cardLikeButton = cardElement.querySelector('.card__like');
+  const cardImage = cardElement.querySelector('.card__photo');
+  const isLikedByCurrentUser = cardData.likes.some((like) => like._id === userId);
+
+  cardElement.querySelector('.card__text').textContent = cardData.name;
+  cardLikeCountElement.textContent = cardData.likes.length;
+  cardImage.src = cardData.link;
+  cardImage.alt = cardData.name;
+
+  if (deleteHandler) {
+    cardDeletButton.addEventListener('click', () => {
+      deleteHandler(cardData._id, cardElement);
     });
-    buttonCardDel.addEventListener('click', deletCard); //слушатель удалить картинку
-    buttonLike.addEventListener('click', likeCard); //слушатель поставить лайк
-    return cardElements;
+  }
+
+  if (likeHandler) {
+    cardLikeButton.addEventListener('click', function() {
+      likeHandler(cardData._id, cardLikeCountElement, cardLikeButton);
+    });
+  }
+  
+  if (imageHandler) {
+    cardImage.addEventListener('click', function() {
+      imageHandler(cardData);
+    });
+  }
+  
+  if (isLikedByCurrentUser) {
+    cardLikeButton.classList.add('card__like_is-active');
+  }
+
+  if (cardData.owner._id !== userId) {
+    cardDeletButton.remove();
+  }
+    
+  return cardElement;
 }
 
-//функция лайк
-function likeCard(event) {
-    event.target.classList.toggle('card__like_active'); // переключить лайк
+// Функция переключения лайка
+export function changeLike(cardId, cardLikeCountElement, cardLikeButton) {
+  const isLiked = cardLikeButton.classList.contains('card__like_is-active');
+  if (isLiked) {
+    handleRemoveLike(cardId)
+    .then((updatedCard) => {
+      cardLikeCountElement.textContent = updatedCard.likes.length;
+      cardLikeButton.classList.remove('card__like_is-active');
+    })
+    .catch((error) => {
+      console.log(`Ошибка: ${error}`);
+    });
+  } else {
+    handleSetLike(cardId)
+    .then((updatedCard) => {
+      cardLikeCountElement.textContent = updatedCard.likes.length;
+      cardLikeButton.classList.add('card__like_is-active');
+    })
+    .catch((error) => {
+      console.log(`Ошибка: ${error}`);
+    });
+  }
 }
 
-//функция удаления карточек
-function deletCard(event) {
-    const parentCardDel = event.target.closest('.card'); //нашли родителя
-    parentCardDel.remove(); //удалить карточку
-} 
+// Функция удаления карточки
+export function handleDeleteCard(cardId, cardElement) {
+  deleteCardData(cardId)
+  .then(() => {
+    cardElement.remove();
+  })
+  .catch((error) => {
+    console.log(`Ошибка: ${error}`);
+  });
+}
