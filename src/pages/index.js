@@ -45,7 +45,7 @@ const popupImageText = popupImage.querySelector('.popup__image-name');  //выб
 const popupPictureCloseButton = popupImage.querySelector('.popup__close'); //кнопка закрытия попапа
 //Попап изменить аватар
 const profileEditAvatarButton = document.querySelector('.profile__edit-avatar'); //кнопка изменить аватар
-const popupUpdatePicture = document.querySelector('#update-pic'); //попап изменить аватар
+const popupUpdatePicture = document.querySelector('#pic'); //попап изменить аватар
 const popupFormUpdatePicture = document.querySelector('form[name="update-pic"]'); //форма изменить аватар
 const popupInputPictureUrl = popupFormUpdatePicture.querySelector('.popup__form_type_picture-url'); //инпут ссылка на новый аватар
 
@@ -227,7 +227,7 @@ function handleFormSubmitNewCard(evt) {
 popupProfileCloseButton.forEach(button => {
   // Нахождение ближайшего попапа и добавление обработчика клика на оверлей
   const popup = button.closest('.popup');
-  popup.addEventListener('mousedown', closePopupClickOverlay);
+  popup.addEventListener('click', closePopupClickOverlay);
   // Добавление обработчика клика на кнопку закрытия попапа
   button.addEventListener('click', () => closePopup(popup));
 });

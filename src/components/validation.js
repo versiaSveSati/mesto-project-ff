@@ -54,23 +54,21 @@ function toggleButtonState(buttonElement, isActive, config) {
 
 // Функция для очистки ошибок валидации и делает кнопку неактивной
 export function clearValidation(formElement, config) {
+    console.log('Clearing validation for form:', formElement);
     // Получаем все элементы ввода внутри формы
     const inputList = formElement.querySelectorAll(config.inputSelector);
-    
-    // Получаем элемент кнопки отправки формы
+        // Получаем элемент кнопки отправки формы
     const submitButtonElement = formElement.querySelector(config.submitButtonSelector);
-
     // Проходим по каждому полю ввода
     [...inputList].forEach(function(inputElement){
         // Получаем элемент для вывода ошибок валидации, связанный с текущим полем ввода
         const errorElement = formElement.querySelector(`#${inputElement.name}-error`);
-        
-        // Вызываем функцию скрытия ошибок для очистки видимых ошибок валидации
+                // Вызываем функцию скрытия ошибок для очистки видимых ошибок валидации
         hideError(inputElement, errorElement, config);
     });
-
     // Делаем кнопку неактивной
     toggleButtonState(submitButtonElement, false, config);
+    console.log('Validation cleared for form:', formElement);
 }
 
 // Функция установки обработчиков событий для формы
