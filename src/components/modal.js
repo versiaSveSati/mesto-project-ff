@@ -1,35 +1,60 @@
-//функция открытия попапа
-export function openPopup(profilePopup) {
-    profilePopup.classList.add("popup_opened");
-    document.addEventListener('keydown', closePopupEsc);
-    console.log('Popup opened:', profilePopup);
+// Переменная для хранения ссылки на текущий открытый попап
+let openedPopup = null;
+
+// Функция открытия попапа
+export function openPopup(popup) {
+  // Если уже открыт попап, закрываем его перед открытием нового
+  if (openedPopup) {
+    closePopup(openedPopup);
+  }
+
+  // Добавляем класс, отвечающий за открытие попапа
+  popup.classList.add("popup_opened");
+  // Добавляем слушатели закрытия для нового попапа
+  addCloseListeners(popup);
+  // Запоминаем текущий открытый попап
+  openedPopup = popup;
 }
 
-//функция закрытия попапа
-export function closePopup(profilePopup) {
-    profilePopup.classList.remove("popup_opened");
-    document.removeEventListener('keydown', closePopupEsc);
-    console.log('Popup closed:', profilePopup);
+// Функция для удаления слушателей закрытия попапа
+function removeCloseListeners(popup) {
+  // Находим все кнопки закрытия в попапе
+  const closeButtons = popup.querySelectorAll(".popup__close");
+  // Удаляем слушатели для каждой кнопки
+  closeButtons.forEach((button) => {
+    button.removeEventListener("click", closePopup);
+  });
+  // Удаляем слушатель для закрытия по клику на оверлей
+  popup.removeEventListener('mousedown', closePopupClickOverlay);
 }
 
-//зактытие через Esc
-function closePopupEsc(evt) {
-    if (evt.key === 'Escape') {
-        const openedPopup = document.querySelector('.popup_opened');
-        closePopup(openedPopup);
-    }
+// Функция для добавления слушателей закрытия попапа
+function addCloseListeners(popup) {
+  // Находим все кнопки закрытия в попапе
+  const closeButtons = popup.querySelectorAll(".popup__close");
+  // Добавляем слушатели для каждой кнопки
+  closeButtons.forEach((button) => {
+    button.addEventListener("click", () => closePopup(popup));
+  });
+  // Добавляем слушатель для закрытия по клику на оверлей
+  popup.addEventListener('mousedown', closePopupClickOverlay);
 }
 
-//закрытие попапов через оверлей
-export function closePopupClickOverlay() {
-    const popupList = Array.from(document.querySelectorAll('.popup')); // найти все попапы, преобразовать в массив
-    popupList.forEach((popup) => { // перебираем элементы массива, каждый записываем в переменную popup
-        popup.addEventListener('click', (event) => { // использовать событие 'click' 
-            const targetClassList = event.target.classList; // записать в переменную класс элемента, на котором произошло событие
-            if (targetClassList.contains('popup') || targetClassList.contains('popup__close')) { // если есть класс попапа или кнопка закрыть
-                closePopup(popup); // если один из классов присутствует, то закрываем попап
-            }
-        })
-    })
+// Функция закрытия попапа
+export function closePopup(popup) {
+  // Убираем класс, отвечающий за открытие попапа
+  popup.classList.remove("popup_opened");
+  // Удаляем слушатели закрытия для текущего попапа
+  removeCloseListeners(popup);
+  // Сбрасываем текущий открытый попап
+  openedPopup = null;
 }
-console.log(closePopupClickOverlay)
+
+// Функция для закрытия попапа по клику на оверлей
+export function closePopupClickOverlay(evt) {
+  // Если клик произошел по оверлею (за пределами контента попапа)
+  if (evt.target.classList.contains("popup_opened")) {
+    // Закрываем попап
+    closePopup(evt.target);
+  }
+}
