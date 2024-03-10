@@ -1,5 +1,5 @@
 // общие данные
-const api = {
+const apiConfig = {
     baseUrl: 'https://nomoreparties.co/v1/wff-cohort-7',
     headers: {
       authorization: '7f6ce425-c311-42fb-8684-c71cb8d86382',
@@ -17,27 +17,27 @@ const api = {
   
   //1. Загрузка информации о пользователе с сервера
   export function getUserInfo() {
-    return fetch(`${api.baseUrl}/users/me`, {
+    return fetch(`${apiConfig.baseUrl}/users/me`, {
       method: 'GET',
-      headers: api.headers
+      headers: apiConfig.headers
     })
-    .then(res => checkResponse(res))
+    .then(checkResponse)
   }
   
   //2. Загрузка карточек с сервера
   export function getInitialCards() {
-    return fetch(`${api.baseUrl}/cards`, {
+    return fetch(`${apiConfig.baseUrl}/cards`, {
       method: 'GET',
-      headers: api.headers
+      headers: apiConfig.headers
     })
     .then(res => checkResponse(res))
   }
    
   //3. Редактирование профиля
   export function saveUserData(newName, newJob) {
-    return fetch(`${api.baseUrl}/users/me`, {
+    return fetch(`${apiConfig.baseUrl}/users/me`, {
       method: 'PATCH',
-      headers: api.headers,
+      headers: apiConfig.headers,
       body: JSON.stringify({
         name: newName,
         about: newJob
@@ -48,9 +48,9 @@ const api = {
   
   // //4. Добавление новой карточки
   export function saveNewCardData(cardData) {
-    return fetch(`${api.baseUrl}/cards`, {
+    return fetch(`${apiConfig.baseUrl}/cards`, {
       method: 'POST',
-      headers: api.headers,
+      headers: apiConfig.headers,
       body: JSON.stringify(cardData)
     })
     .then(res => checkResponse(res))
@@ -58,35 +58,35 @@ const api = {
   
   //5. Постановка и снятие лайка
   export function handleSetLike(cardId) {
-    return fetch(`${api.baseUrl}/cards/likes/${cardId}`, {
+    return fetch(`${apiConfig.baseUrl}/cards/likes/${cardId}`, {
       method: 'PUT',
-      headers: api.headers,
+      headers: apiConfig.headers,
     })
     .then(res => checkResponse(res))
   }
   
   export function handleRemoveLike(cardId) {
-    return fetch(`${api.baseUrl}/cards/likes/${cardId}`, {
+    return fetch(`${apiConfig.baseUrl}/cards/likes/${cardId}`, {
       method: 'DELETE',
-      headers: api.headers,
+      headers: apiConfig.headers,
     })
     .then(res => checkResponse(res))
   }
   
   //6. Удаление карточки
   export function deleteCardData(cardId) {
-    return fetch(`${api.baseUrl}/cards/${cardId}`, {
+    return fetch(`${apiConfig.baseUrl}/cards/${cardId}`, {
       method: 'DELETE',
-      headers: api.headers,
+      headers: apiConfig.headers,
     })
     .then(res => checkResponse(res))
   }
   
   //7. Обновление аватара пользователя
   export function saveUserPicture(pictureData) {
-    return fetch(`${api.baseUrl}/users/me/avatar`, {
+    return fetch(`${apiConfig.baseUrl}/users/me/avatar`, {
       method: 'PATCH',
-      headers: api.headers,
+      headers: apiConfig.headers,
       body: JSON.stringify(pictureData)
     })
     .then(res => checkResponse(res))

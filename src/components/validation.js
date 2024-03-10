@@ -12,7 +12,7 @@ function showError(inputElement, errorElement, config) {
     // Добавить класс с красной рамкой к элементу ввода
     inputElement.classList.add(config.inputErrorClass);
     // Установить текст ошибки в элемент ошибки
-    errorElement.textContent = inputElement.validationMessage;
+    errorElement.textContent = inputElement.dataset.error || inputElement.validationMessage;
 }
 
 // Функция для скрытия ошибки валидации
@@ -47,7 +47,7 @@ function toggleButtonState(buttonElement, isActive, config) {
             buttonElement.classList.remove(config.inactiveButtonClass);
         } else {
             buttonElement.classList.add(config.inactiveButtonClass);
-            buttonElement.disabled = 'disabled';
+            buttonElement.disabled = 'true';
         }
     }
 }
