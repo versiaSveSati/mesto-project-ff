@@ -134,68 +134,55 @@ function openImagePopup(cardData) {
 }
 
 
-// Обработчик отправки формы изменения аватара
+// Обработчик отправки формы для изменения аватара
 function handleFormSubmitUpdatePicture(evt) {
-  // Отменяем стандартное поведение формы (перезагрузка страницы)
-  evt.preventDefault();
-  // Устанавливаем текст кнопки отправки формы в "Сохранение..."
-  profileFormSubmitButton.textContent = 'Сохранение...';
-  // Создаем объект с данными для обновления аватара пользователя
+  evt.preventDefault(); // Отменяем стандартное поведение формы
+  profileFormSubmitButton.textContent = 'Сохранение...'; // Меняем текст кнопки на "Сохранение..."
+
   const pictureData = {
-    avatar: popupInputPictureUrl.value
-  };
-  // Отправляем запрос на сервер для обновления аватара
-  saveUserPicture(pictureData)
-    .then(() => {
-      // Обновляем фоновое изображение аватара в профиле пользователя
-      profileImage.style.backgroundImage = `url(${popupInputPictureUrl.value})`;
-      // Закрываем попап изменения аватара
-      closePopup(popupUpdatePicture);
-      // Сбрасываем значения полей формы изменения аватара
-      popupFormUpdatePicture.reset();
-      // Очищаем сообщения об ошибках валидации для формы изменения аватара
-      clearValidation(popupFormUpdatePicture, config);
+    avatar: popupInputPictureUrl.value // Получаем ссылку на новый аватар из инпута
+  }
+
+  saveUserPicture(pictureData) // Вызываем API для сохранения нового аватара
+    .then((updatedUserData) => {
+      // После успешного запроса
+      profileImage.style.backgroundImage = `url(${updatedUserData.avatar})`; // Обновляем аватар из данных ответа сервера
+      closePopup(popupUpdatePicture); // Закрываем попап
+      popupFormUpdatePicture.reset(); // Очищаем форму
+      clearValidation(popupFormUpdatePicture, config); // Очищаем сообщения об ошибках валидации
     })
     .catch((error) => {
-      // Обрабатываем ошибку при запросе и выводим ее в консоль
-      console.log(`Ошибка: ${error}`);
+      console.log(`Ошибка: ${error}`); // Обработка ошибок при запросе к серверу
     })
     .finally(() => {
-      // Восстанавливаем текст кнопки отправки формы в "Сохранить"
-      profileFormSubmitButton.textContent = 'Сохранить';
+      profileFormSubmitButton.textContent = 'Сохранить'; // Восстанавливаем текст кнопки
     });
 }
+
 
 // Обработчик отправки формы редактирования профиля
 function handleFormSubmitEdit(evt) {
-  // Отменяем стандартное поведение формы (перезагрузка страницы)
-  evt.preventDefault();
-  // Устанавливаем текст кнопки отправки формы в "Сохранение..."
-  profileFormSubmitButton.textContent = 'Сохранение...';
-  // Получаем новые значения из полей формы редактирования профиля
-  const newName = nameInput.value;
-  const newJob = jobInput.value;
-  // Отправляем запрос на сервер для обновления данных профиля пользователя
-  saveUserData(newName, newJob)
-    .then(() => {
-      // Обновляем текстовое содержимое элементов с именем и профессией пользователя
-      profileName.textContent = newName;
-      profileText.textContent = newJob;
-      // Закрываем попап редактирования профиля
-      closePopup(profilePopup);
-      // Очищаем сообщения об ошибках валидации для формы редактирования профиля
-      clearValidation(profileForm, config);
+  evt.preventDefault(); // Отменяем стандартное поведение формы
+  profileFormSubmitButton.textContent = 'Сохранение...'; // Меняем текст кнопки на "Сохранение..."
+
+  const newName = nameInput.value; // Получаем новое имя из инпута
+  const newJob = jobInput.value; // Получаем новую профессию из инпута
+
+  saveUserData(newName, newJob) // Вызываем API для сохранения новых данных профиля
+    .then((updatedUserData) => {
+      // После успешного запроса
+      profileName.textContent = updatedUserData.name; // Обновляем имя из данных ответа сервера
+      profileText.textContent = updatedUserData.about; // Обновляем профессию из данных ответа сервера
+      closePopup(profilePopup); // Закрываем попап
+      clearValidation(profileForm, config); // Очищаем сообщения об ошибках валидации
     })
     .catch((error) => {
-      // Обрабатываем ошибку при запросе и выводим ее в консоль
-      console.log(`Ошибка: ${error}`);
+      console.log(`Ошибка: ${error}`); // Обработка ошибок при запросе к серверу
     })
     .finally(() => {
-      // Восстанавливаем текст кнопки отправки формы в "Сохранить"
-      profileFormSubmitButton.textContent = 'Сохранить';
+      profileFormSubmitButton.textContent = 'Сохранить'; // Восстанавливаем текст кнопки
     });
 }
-
 
 // Обработчик отправки формы добавления новой карточки
 function handleFormSubmitNewCard(evt) {
