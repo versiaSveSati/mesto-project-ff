@@ -45,9 +45,9 @@ const popupImageText = popupImage.querySelector('.popup__image-name');  //выб
 const popupPictureCloseButton = popupImage.querySelector('.popup__close'); //кнопка закрытия попапа
 //Попап изменить аватар
 const profileEditAvatarButton = document.querySelector('.profile__edit-avatar'); //кнопка изменить аватар
-const popupUpdatePicture = document.querySelector('.popup_type_update-pic'); //попап изменить аватар
+const popupUpdatePicture = document.querySelector('#update-pic'); //попап изменить аватар
 const popupFormUpdatePicture = document.querySelector('form[name="update-pic"]'); //форма изменить аватар
-const popupInputPictureUrl = popupFormUpdatePicture.querySelector('.popup__input_type_picture-url'); //инпут ссылка на новый аватар
+const popupInputPictureUrl = popupFormUpdatePicture.querySelector('.popup__form_type_picture-url'); //инпут ссылка на новый аватар
 
 // Переменная для хранения ID пользователя
 let userId;
