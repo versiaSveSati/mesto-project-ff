@@ -12,7 +12,7 @@ function showError(inputElement, errorElement, config) {
     // Добавить класс с красной рамкой к элементу ввода
     inputElement.classList.add(config.inputErrorClass);
     // Установить текст ошибки в элемент ошибки
-    errorElement.textContent = inputElement.dataset.error || inputElement.validationMessage;
+   errorElement.textContent = inputElement.validationMessage;
 }
 
 // Функция для скрытия ошибки валидации
